@@ -143,7 +143,7 @@ namespace Tac
                 {
                     try
                     {
-                        paused = PauseMenu.isOpen || FlightResultsDialog.isDisplaying;
+                        paused = PauseMenu.isOpen || KSP.UI.Dialogs.FlightResultsDialog.isDisplaying;
                     }
                     catch (Exception)
                     {
