@@ -56,24 +56,12 @@ namespace Tac
             content = (texture != null) ? new GUIContent(texture, tooltip) : new GUIContent(noImageText, tooltip);
         }
 
-        public void SetVisible(bool newValue)
+        public void OnGUI()
         {
-            if (newValue)
+            if (visible)
             {
-                if (!visible)
-                {
-                    RenderingManager.AddToPostDrawQueue(3, DrawIcon);
-                }
+                DrawIcon();
             }
-            else
-            {
-                if (visible)
-                {
-                    RenderingManager.RemoveFromPostDrawQueue(3, DrawIcon);
-                }
-            }
-
-            this.visible = newValue;
         }
 
         public bool IsVisible()
