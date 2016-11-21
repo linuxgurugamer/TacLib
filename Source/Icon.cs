@@ -54,25 +54,19 @@ namespace Tac
             }
             set
             {
-                if (value)
-                {
-                    if (!visible)
-                    {
-                        RenderingManager.AddToPostDrawQueue(3, DrawIcon);
-                    }
-                }
-                else
-                {
-                    if (visible)
-                    {
-                        RenderingManager.RemoveFromPostDrawQueue(3, DrawIcon);
-                    }
-                }
-
                 visible = value;
             }
         }
 
+        public void OnGUI()
+        {
+            {
+                if (visible)
+                {
+                    DrawIcon();
+                }
+            }
+        }
         public Icon(Rect defaultPosition, string imageFilename, string noImageText, string tooltip, Action onClickHandler, string configNodeName = "Icon")
         {
             this.configNodeName = configNodeName;
