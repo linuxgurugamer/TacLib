@@ -46,7 +46,7 @@ namespace Tac
         private GUIStyle iconStyle;
 
         private bool visible;
-        public bool Visible
+        public Icon(Rect defaultPosition, string imageFilename, string noImageText, string tooltip, Action onClickHandler)
         {
             Debug.Log("TAC Icon [" + this.GetHashCode().ToString("X") + "][" + Time.time + "]: Constructor: " + imageFilename);
             this.iconId = imageFilename.GetHashCode();
@@ -65,23 +65,9 @@ namespace Tac
             }
         }
 
-        public Icon(Rect defaultPosition, string imageFilename, string noImageText, string tooltip, Action onClickHandler, string configNodeName = "Icon")
+        public bool IsVisible()
         {
-            this.configNodeName = configNodeName;
-            this.Log("Constructor: " + imageFilename);
-            this.iconId = imageFilename.GetHashCode();
-            this.iconPos = defaultPosition;
-            this.onClick = onClickHandler;
-
-            if (GameDatabase.Instance.ExistsTexture(imageFilename))
-            {
-                Texture2D texture = GameDatabase.Instance.GetTexture(imageFilename, false);
-                content = new GUIContent(texture, tooltip);
-            }
-            else
-            {
-                content = new GUIContent(noImageText, tooltip);
-            }
+            return visible;
         }
 
         private void DrawIcon()
