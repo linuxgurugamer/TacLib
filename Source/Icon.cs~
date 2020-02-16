@@ -48,6 +48,31 @@ namespace Tac
         private bool visible;
         public bool Visible
         {
+<<<<<<< HEAD
+            get
+            {
+                return visible;
+            }
+            set
+            {
+                if (value)
+                {
+                    if (!visible)
+                    {
+                        RenderingManager.AddToPostDrawQueue(3, DrawIcon);
+                    }
+                }
+                else
+                {
+                    if (visible)
+                    {
+                        RenderingManager.RemoveFromPostDrawQueue(3, DrawIcon);
+                    }
+                }
+
+                visible = value;
+            }
+=======
             Debug.Log("TAC Icon [" + this.GetHashCode().ToString("X") + "][" + Time.time + "]: Constructor: " + imageFilename);
             this.iconId = imageFilename.GetHashCode();
             this.iconPos = defaultPosition;
@@ -63,6 +88,7 @@ namespace Tac
             {
                 DrawIcon();
             }
+>>>>>>> 0b860528b89c0434020467d3854dc2b50ec5b6f1
         }
 
         public Icon(Rect defaultPosition, string imageFilename, string noImageText, string tooltip, Action onClickHandler, string configNodeName = "Icon")

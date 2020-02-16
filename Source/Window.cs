@@ -77,22 +77,15 @@ namespace Tac
 
         public virtual void SetVisible(bool newValue)
         {
-            if (newValue)
-            {
-                if (!visible)
-                {
-                    RenderingManager.AddToPostDrawQueue(3, new Callback(DrawWindow));
-                }
-            }
-            else
-            {
-                if (visible)
-                {
-                    RenderingManager.RemoveFromPostDrawQueue(3, new Callback(DrawWindow));
-                }
-            }
-
             this.visible = newValue;
+        }
+
+        public void OnGUI()
+        {
+            if (visible)
+            {
+                DrawWindow();
+            }
         }
 
         public void ToggleVisible()
@@ -163,7 +156,7 @@ namespace Tac
                 {
                     try
                     {
-                        paused = PauseMenu.isOpen || FlightResultsDialog.isDisplaying;
+                        paused = PauseMenu.isOpen || KSP.UI.Dialogs.FlightResultsDialog.isDisplaying;
                     }
                     catch (Exception)
                     {
